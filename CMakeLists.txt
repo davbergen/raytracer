@@ -13,9 +13,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Add the source files to the project
-add_executable(raytracer src/main.cpp)
+add_executable(raytracer src/main.cpp src/camera.cpp src/ray.cpp src/scene.cpp)
 
 target_link_libraries(raytracer glm)
+
 
 target_include_directories(raytracer PRIVATE modules/headers public_include)
 
