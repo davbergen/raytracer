@@ -35,7 +35,7 @@ void initializeScene(Scene& r_scene)
     r_scene.addGeometryToScene(sphere);
 
     // // Create the camera
-    std::shared_ptr<Camera> camera = std::make_shared<Camera>(c_xSize, c_ySize, c_channels, glm::vec3(0, 0, -10), glm::vec3(0, 0, 1));
+    std::shared_ptr<Camera> camera = std::make_shared<Camera>(c_xSize, c_ySize, c_channels, glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), 60.f, 1.f);
     r_scene.addCameraToScene(camera);
 }
 
@@ -44,9 +44,7 @@ int main()
     Scene scene {};
     initializeScene(scene);
 
-    std::shared_ptr<Camera> camera = scene.getCamera();
-
-    camera->render();
+    scene.getCamera()->render();
 
     std::vector<unsigned char> canvas(c_xSize * c_ySize * c_channels);
 

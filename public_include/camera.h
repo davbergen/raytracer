@@ -5,9 +5,16 @@
 #include <vector>
 
 namespace raytracer {
+
+struct Viewplane {
+    float height;
+    float width;
+    glm::vec3 position;
+};
+
 class Camera {
 public:
-    Camera(int a_screenWidth, int a_screenHeight, int a_numChannels, glm::vec3 a_position, glm::vec3 a_direction);
+    Camera(int a_screenWidth, int a_screenHeight, int a_numChannels, glm::vec3 a_position, glm::vec3 a_direction, float a_fov, float a_focalLength);
 
     void render();
 
@@ -24,7 +31,12 @@ private:
     int m_numChannels;
     glm::vec3 m_position;
     glm::vec3 m_direction;
+    float m_fov;
+    float m_focalLength;
+    Viewplane m_viewplane {};
     std::vector<unsigned char> m_canvas;
+
+    glm::vec3 getPixelWorldLocationFrom2DCoords(float a_x, float a_y);
 };
 }
 
